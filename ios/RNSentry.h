@@ -14,4 +14,6 @@
 + (void)installWithRootView:(RCTRootView *)rootView;
 + (void)installWithBridge:(RCTBridge *)bridge;
 
++ (void)addNativeBreadcrumbWith:(NSString *)message;
+
 @end

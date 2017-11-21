@@ -38,6 +38,13 @@ NSString *const RNSentrySdkName = @"sentry-react-native";
     // For now we don't need this anymore
 }
 
++ (void)addNativeBreadcrumbWith:(NSString *)message {
+    SentryBreadcrumb *breadcrumb = [[SentryBreadcrumb alloc] initWithLevel:kSentrySeverityInfo category:@"native"];
+    breadcrumb.message = message;
+    
+    [SentryClient.sharedClient.breadcrumbs addBreadcrumb:breadcrumb];
+}
+
 - (NSInteger)indexOfReactNativeCallFrame:(NSArray<SentryFrame *> *)frames nativeCallAddress:(NSUInteger)nativeCallAddress {
     NSInteger smallestDiff = NSIntegerMax;
     NSInteger index = -1;
